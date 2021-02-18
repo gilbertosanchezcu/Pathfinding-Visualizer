@@ -1,0 +1,12 @@
+.grid {
+  margin: 170px 0 0;
+  position: relative;
+  /* top: 160px; */
+}
+
+.parent {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}

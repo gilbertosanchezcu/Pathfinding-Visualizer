@@ -1,0 +1,495 @@
+.node {
+  width: 25px;
+  height: 25px;
+  outline: 2px solid rgb(175, 216, 248);
+  display: inline-block;
+}
+
+@media screen and (max-width: 965px) {
+  .node {
+    width: 16px;
+    height: 16px;
+    outline: 2px solid rgb(175, 216, 248);
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 1271px) {
+  .node {
+    width: 23px;
+    height: 23px;
+    outline: 2px solid rgb(175, 216, 248);
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 1165px) {
+  .node {
+    width: 20px;
+    height: 20px;
+    outline: 2px solid rgb(175, 216, 248);
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 1015px) {
+  .node {
+    width: 17px;
+    height: 17px;
+    outline: 2px solid rgb(175, 216, 248);
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 864px) {
+  .node {
+    width: 14px;
+    height: 14px;
+    outline: 2px solid rgb(175, 216, 248);
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 714px) {
+  .node {
+    width: 12px;
+    height: 12px;
+    outline: 2px solid rgb(175, 216, 248);
+    display: inline-block;
+  }
+}
+
+.node-start {
+  /*border: 1px solid rgb(175, 216, 248);*/
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  /*background-color: rgb(255, 254, 106);*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  /* animation-name: specialNodes;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running; */
+}
+
+.node-finish {
+  /*border: 1px solid rgb(175, 216, 248);*/
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  /*background-color: rgb(255, 254, 106);*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* animation-name: specialNodes;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running; */
+}
+
+.node-wall {
+  background-color: rgb(12, 53, 71);
+  /* animation: specialNodes;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+  animation-play-state: running; */
+}
+
+.node-finish-visited {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  /*background-color: rgb(255, 254, 106);*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.node-start-visited {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  /*background-color: rgb(255, 254, 106);*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.5;
+}
+
+.node-visited-start {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-color: rgb(255, 254, 106);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.5;
+}
+
+.node-start-noshortestpath {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-color: rgb(255, 254, 106);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.5;
+}
+
+.node-finish-noshortestpath {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.node-visited-finish {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-color: rgb(255, 254, 106);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.node-visited-dijkstra {
+  background-color: #00ff00;
+}
+
+.node-visited-dfs {
+  background-color: #ff00ff;
+}
+
+.node-visited-bfs {
+  background-color: #00ffff;
+}
+
+.node-visited-astar {
+  background-color: #ff0000;
+}
+
+.node-shortest-path {
+  background-color: rgb(255, 254, 106);
+}
+
+.node-visited-start-animate-dijkstra {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  animation-name: visitedAnimationDijkstra;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-finish-animate-dijkstra {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  animation-name: visitedAnimationDijkstra;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-animate-dijkstra {
+  animation-name: visitedAnimationDijkstra;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  /* outline: 1px solid black; */
+}
+
+.node-visited-start-animate-dfs {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  animation-name: visitedAnimationDfs;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-finish-animate-dfs {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  animation-name: visitedAnimationDfs;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-animate-dfs {
+  animation-name: visitedAnimationDfs;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-start-animate-bfs {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  animation-name: visitedAnimationBfs;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-finish-animate-bfs {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  animation-name: visitedAnimationBfs;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-animate-bfs {
+  animation-name: visitedAnimationBfs;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-start-animate-astar {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  animation-name: visitedAnimationAStar;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-finish-animate-astar {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  animation-name: visitedAnimationAStar;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-animate-astar {
+  animation-name: visitedAnimationAStar;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-shortestPath-start-animate {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  opacity: 0.5;
+  animation-name: shortestPath;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+.node-shortestPath-finish-animate {
+  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  animation-name: shortestPath;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+.node-shortestPath-animate {
+  animation-name: shortestPath;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+@keyframes visitedAnimationDijkstra {
+  0% {
+    transform: scale(0.3);
+    background-color: black;
+    border-radius: 100%;
+  }
+
+  50% {
+    background-color: black;
+  }
+
+  75% {
+    transform: scale(1.2);
+    background-color: #00ff00;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #00ff00;
+  }
+}
+
+@keyframes visitedAnimationDfs {
+  0% {
+    transform: scale(0.3);
+    background-color: black;
+    border-radius: 100%;
+  }
+
+  50% {
+    background-color: black;
+  }
+
+  75% {
+    transform: scale(1.2);
+    background-color: #ff00ff;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #ff00ff;
+  }
+}
+
+@keyframes visitedAnimationBfs {
+  0% {
+    transform: scale(0.3);
+    background-color: black;
+    border-radius: 100%;
+  }
+
+  50% {
+    background-color: black;
+  }
+
+  75% {
+    transform: scale(1.2);
+    background-color: #00ffff;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #00ffff;
+  }
+}
+
+@keyframes visitedAnimationAStar {
+  0% {
+    transform: scale(0.3);
+    background-color: rgba(0, 0, 66, 0.75);
+    border-radius: 100%;
+  }
+
+  50% {
+    background-color: black;
+  }
+
+  75% {
+    transform: scale(1.2);
+    background-color: #ff0000;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #ff0000;
+  }
+}
+
+@keyframes specialNodes {
+  0% {
+    transform: scale(0.2);
+    /*background-color: darkslategrey;*/
+  }
+
+  50% {
+    transform: scale(1.2);
+    /*background-color: darkslategrey;*/
+  }
+
+  100% {
+    transform: scale(1);
+    /*background-color: darkslategrey;*/
+  }
+}
+
+@keyframes shortestPath {
+  0% {
+    transform: scale(0.6);
+    background-color: rgb(255, 254, 106);
+    background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/animal-footprints-svgrepo-com.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: rgb(255, 254, 106);
+    /* background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/animal-footprints-svgrepo-com.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; */
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: rgb(255, 254, 106);
+  }
+}
+
+@keyframes shortestPathStartNode {
+  0% {
+    transform: scale(0.6);
+    background-color: rgb(255, 254, 106);
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: rgb(255, 254, 106);
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: rgb(255, 254, 106);
+  }
+}
