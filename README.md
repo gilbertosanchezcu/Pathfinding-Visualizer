@@ -21,3 +21,6 @@ This project currently focuses on four algorithms:
 Click on cells to add walls.
 
 Once search algorithm is done running, drag start or end point to automatically calculate new paths. Click on different algorithms to compare paths.
+
+##Here's the project! Enjoy!
+(https://gilbertosanchez-pathfinder.netlify.app/)
