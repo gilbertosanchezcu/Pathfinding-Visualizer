@@ -7,8 +7,6 @@ import {SliderData} from './Items';
 
 export const Slider = ({slides}) => {
     const [current, setCurrent] = useState([0])
-    const length = slides.length;
-
     const nextSlide = () => {
         if(current[0] === 0){
             setCurrent([1,2,3,4])

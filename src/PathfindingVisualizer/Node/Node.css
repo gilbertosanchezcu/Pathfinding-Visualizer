@@ -57,7 +57,7 @@
 
 .node-start {
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -103,7 +103,7 @@
 }
 
 .node-finish-visited {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -111,7 +111,7 @@
 }
 
 .node-start-visited {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -120,7 +120,7 @@
 }
 
 .node-visited-start {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -129,7 +129,7 @@
 }
 
 .node-start-noshortestpath {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -145,7 +145,7 @@
 }
 
 .node-visited-finish {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -173,7 +173,7 @@
 }
 
 .node-visited-start-animate-dijkstra {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   animation-name: visitedAnimationDijkstra;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -209,7 +209,7 @@
 }
 
 .node-visited-start-animate-dfs {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   animation-name: visitedAnimationDfs;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -244,7 +244,7 @@
 }
 
 .node-visited-start-animate-bfs {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   animation-name: visitedAnimationBfs;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -279,7 +279,7 @@
 }
 
 .node-visited-start-animate-astar {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   animation-name: visitedAnimationAStar;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -314,7 +314,7 @@
 }
 
 .node-shortestPath-start-animate {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   opacity: 0.5;
   animation-name: shortestPath;
   animation-duration: 0.5s;
@@ -326,7 +326,7 @@
   animation-play-state: running;
 }
 .node-shortestPath-finish-animate {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse-svgrepo-com.svg);
   animation-name: shortestPath;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
