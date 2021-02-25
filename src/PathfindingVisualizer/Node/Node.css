@@ -75,7 +75,7 @@
 
 .node-finish {
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese-svgrepo-com.svg);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -138,7 +138,7 @@
 }
 
 .node-finish-noshortestpath {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese-svgrepo-com.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -185,7 +185,7 @@
 }
 
 .node-visited-finish-animate-dijkstra {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese-svgrepo-com.svg);
   animation-name: visitedAnimationDijkstra;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -221,7 +221,7 @@
 }
 
 .node-visited-finish-animate-dfs {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese-svgrepo-com.svg);
   animation-name: visitedAnimationDfs;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -256,7 +256,7 @@
 }
 
 .node-visited-finish-animate-bfs {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese-svgrepo-com.svg);
   animation-name: visitedAnimationBfs;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -291,7 +291,7 @@
 }
 
 .node-visited-finish-animate-astar {
-  background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese-svgrepo-com.svg);
   animation-name: visitedAnimationAStar;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -456,7 +456,7 @@
   0% {
     transform: scale(0.6);
     background-color: rgb(255, 254, 106);
-    background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/animal-footprints-svgrepo-com.svg);
+    background-image: url(../../images/animal-footprints-svgrepo-com.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
