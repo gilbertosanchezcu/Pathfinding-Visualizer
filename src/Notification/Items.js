@@ -19,7 +19,7 @@ export const SliderData = [
     {
         id: 2,
         index:2,
-        text: 'Create obstacles! Click on cells to add walls or use the "Create Maze" button to generate walls in a maze pattern.',
+        text: 'Create obstacles! Click on cells to add walls or use the "Create Maze" button to generate walls in a maze pattern. (Clear all walls before using "Create Maze")',
         class: 'text-box'
     },
     {
