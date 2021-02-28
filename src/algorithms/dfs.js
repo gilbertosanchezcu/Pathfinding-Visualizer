@@ -13,10 +13,7 @@ export function dfs(grid, startNode, finishNode) {
       //append cells from all directions 
       currentNode.isVisited = true;
       visitedNodes.push(currentNode);
-      if (currentNode === finishNode){
-        console.log('visitedNodes', visitedNodes);
-        console.log('stack', stack)
-        return visitedNodes;}
+      if (currentNode === finishNode) return visitedNodes;
 
       const {row, col} = currentNode;
       //push node above current cell

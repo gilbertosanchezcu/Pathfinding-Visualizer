@@ -198,7 +198,6 @@ export function astar(grid, startNode, finishNode) {
       currentNode.isShortestPath = true;
       currentNode = currentNode.previousNode;
     }
-    console.log('nodesInShortestPathOrder', nodesInShortestPathOrder);
     return nodesInShortestPathOrder;
   }
 

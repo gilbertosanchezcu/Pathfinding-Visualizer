@@ -925,7 +925,6 @@ export default class PathfindingVisualizer extends Component {
 
   render() {
     const {grid, mouseIsPressed} = this.state;
-    {console.log(this.state.grid)};
     return (
       <div className = 'parent'>
         <nav className = 'navbar'>
