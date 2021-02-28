@@ -9,23 +9,27 @@ export const Slider = ({slides}) => {
     const [current, setCurrent] = useState([0])
     const nextSlide = () => {
         if(current[0] === 0){
-            setCurrent([1,2,3,4])
+            setCurrent([1])
         } else if (current[0]=== 1){
-            setCurrent([5,6,7,8])
-        } else if (current[0] === 5){
-            setCurrent([9,10,11,12])
-        } else if (current[0]=== 9){
+            setCurrent([2,3,4,5])
+        } else if (current[0] === 2){
+            setCurrent([6,7,8,9])
+        } else if (current[0]=== 6){
+            setCurrent([10,11,12,13])
+        } else if (current[0] === 10){
             setCurrent([0])
         }
     } 
 
     const prevSlide = () => {
         if (current[0] === 0){
-            setCurrent([9,10,11,12])
-        } else if (current[0]=== 9){
-            setCurrent([5,6,7,8])
-        } else if (current[0]=== 5){
-            setCurrent([1,2,3,4])
+            setCurrent([10,11,12,13])
+        } else if (current[0]=== 10){
+            setCurrent([6,7,8,9])
+        } else if (current[0]=== 6){
+            setCurrent([2,3,4,5])
+        } else if (current[0] === 2){
+            setCurrent([1])
         } else if (current[0] === 1){
             setCurrent([0])
         }

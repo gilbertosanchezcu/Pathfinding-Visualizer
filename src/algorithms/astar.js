@@ -36,7 +36,7 @@ export function astar(grid, startNode, finishNode) {
       const unvisitedNeighbors = getUnvisitedNeighbors(node, grid);
       for (const neighbor of unvisitedNeighbors) {
         if (neighbor.closed || neighbor.isWall) continue;
-        let newGScore = node.g + 1
+        let newGScore = node.g + neighbor.weight
         const beenVisited = neighbor.isVisited
         if (neighbor.isVisited === false || newGScore<neighbor.g){
           neighbor.isVisited = true

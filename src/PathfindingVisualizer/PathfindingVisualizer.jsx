@@ -22,6 +22,7 @@ export default class PathfindingVisualizer extends Component {
     this.state = {
       grid: [],
       mouseIsPressed: false,
+      keyPress: false,
       startRow : 8,
       startCol : 15,
       endRow : 8,
@@ -38,6 +39,8 @@ export default class PathfindingVisualizer extends Component {
   componentDidMount() {
     const grid = this.getInitialGrid();
     this.setState({grid});
+    window.addEventListener("keydown", this.handleKeyDown)
+    window.addEventListener("keyup", this.handleKeyUp)
   };
 
 
@@ -66,9 +69,11 @@ export default class PathfindingVisualizer extends Component {
       isStart: row === this.state.startRow && col === this.state.startCol,
       isFinish: row === this.state.endRow && col === this.state.endCol,
       distance: Infinity,
+      weight: 1,
       isVisited: false,
       isShortestPath: false,
       isWall: false,
+      isTrap: false,
       previousNode: null,
       g : Infinity,
       f : 0,
@@ -136,9 +141,24 @@ export default class PathfindingVisualizer extends Component {
     let finishNode = null;
     for (const rows of gridCopy){
       for (const node of rows){
-        if (!node.isWall){
+        if (node.isTrap && !node.isWall){
           node.isStart = false;
           node.distance = Infinity;
+          node.weight = 10;
+          node.isTrap = true;
+          node.isVisited = false;
+          node.isShortestPath = false;
+          node.previousNode = null;
+          node.g = Infinity;
+          node.f = 0;
+          node.h = 0;
+          node.closed = false; 
+        }
+        else if (!node.isTrap && !node.isWall){
+          node.isStart = false;
+          node.distance = Infinity;
+          node.weight = 1;
+          node.isTrap = false;
           node.isVisited = false;
           node.isShortestPath = false;
           node.previousNode = null;
@@ -150,8 +170,11 @@ export default class PathfindingVisualizer extends Component {
         if (node.isFinish){
           finishNode = node
         }
-        if (!node.isStart && !node.isFinish && !node.isWall){
+        if (!node.isStart && !node.isFinish && !node.isWall && !node.isTrap){
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node'
+        }
+        if (!node.isStart && !node.isFinish && !node.isWall && node.isTrap){
+          document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-trap'
         }
 
       }
@@ -180,9 +203,11 @@ export default class PathfindingVisualizer extends Component {
     let finishNode = null;
     for (const rows of gridCopy){
       for (const node of rows){
-        if (!node.isWall){
+        if (node.isTrap && !node.isWall){
           node.isFinish = false;
           node.distance = Infinity;
+          node.weight = 10;
+          node.isTrap = true;
           node.isVisited = false;
           node.isShortestPath = false;
           node.previousNode = null;
@@ -190,14 +215,29 @@ export default class PathfindingVisualizer extends Component {
           node.f = 0;
           node.h = 0;
           node.closed = false;        
+        } else if (!node.isTrap && !node.isWall){
+          node.isFinish = false;
+          node.distance = Infinity;
+          node.weight = 1;
+          node.isTrap = false;
+          node.isVisited = false;
+          node.isShortestPath = false;
+          node.previousNode = null;
+          node.g = Infinity;
+          node.f = 0;
+          node.h = 0;
+          node.closed = false;   
         }
         if (node.isStart){
           startNode = node
         }
-        if (!node.isStart && !node.isFinish && !node.isWall){
+        if (!node.isStart && !node.isFinish && !node.isWall && !node.isTrap){
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node'
         }
-
+        if (!node.isStart && !node.isFinish && !node.isWall && node.isTrap){
+          document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-trap'
+        }
+        
       }
     }
     gridCopy[row][col].isFinish = true;
@@ -230,13 +270,18 @@ export default class PathfindingVisualizer extends Component {
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-start-noshortestpath'
       } else if (node.isFinish && !node.isShortestPath){
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-finish-noshortestpath'
-      }
-      else if (node.isFinish && node.isShortestPath){
+      } else if (node.isFinish && node.isShortestPath){
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-finish'
-      } else if (node.isShortestPath){
+      } else if (node.isTrap && !node.isShortestPath && !node.isVisited){
+        document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-trap-noshortestpath'
+      } else if (node.isTrap && node.isShortestPath && node.isVisited){
+        document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-trap'
+      } else if (node.isShortestPath && !node.isTrap){
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortest-path'
-      } else if (node.isVisited && !node.isStart && !node.isFinish && !node.isShortestPath){
+      } else if (node.isVisited && !node.isStart && !node.isFinish && !node.isShortestPath && !node.isTrap && !node.isWall){
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-dijkstra'
+      } else if (node.isVisited && !node.isStart && !node.isFinish && !node.isShortestPath && node.isTrap && !node.isWall){
+        document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-trap-dijkstra-noanimate'
       } else if (node.isWall){
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-wall'
       }
@@ -308,17 +353,32 @@ export default class PathfindingVisualizer extends Component {
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-start-noshortestpath'
       } else if (node.isFinish & node.isShortestPath){
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-finish'
-      } else if (node.isShortestPath){
+      } else if (node.isFinish && !node.isShortestPath){
+        document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-finish-noshortestpath'
+      } else if (node.isTrap && !node.isShortestPath && !node.isVisited){
+        document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-trap-noshortestpath'
+      } else if (node.isTrap && node.isShortestPath && node.isVisited){
+        document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-trap'
+      } else if (node.isShortestPath && !node.isTrap){
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortest-path'
-      } else if (node.isVisited && !node.isStart && !node.isFinish && !node.isShortestPath){
+      } else if (node.isVisited && !node.isStart && !node.isFinish && !node.isShortestPath && !node.isTrap && !node.isWall){
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-astar'
+      } else if (node.isVisited && !node.isStart && !node.isFinish && !node.isShortestPath && node.isTrap && !node.isWall){
+        document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-trap-astar-noanimate'
       } else if (node.isWall){
         document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-wall'
-      }
+      } 
     }
     if (!finish.isVisited){
       document.getElementById(`node-${finish.row}-${finish.col}`).className = 'node node-finish-noshortestpath'
     }
+  }
+  
+  handleKeyDown = (event) =>{
+    if (event.keyCode == 87) this.setState({keyPress: event.keyCode})
+  }
+  handleKeyUp = (event) =>{
+    if (this.state.keyPress) this.setState({keyPress: false})
   }
 
   handleMouseDown = (row, col) => {
@@ -330,7 +390,7 @@ export default class PathfindingVisualizer extends Component {
       this.setState({grid:newGridEnd, mouseIsPressed: true, start: false, end: true, wall: false})
 
       //check if i need to include this condition
-    } else if (!this.state.algoDone) {
+    } else if (!this.state.keyPress && !this.state.algoDone) {
       // getNewGridWithWallToggled(this.state.grid, row, col)
       // this.setState({mouseIsPressed:true, start:false, end: false, wall:true})
       const newGridWall = getNewGridWithWallToggled(this.state.grid, row, col);
@@ -338,8 +398,11 @@ export default class PathfindingVisualizer extends Component {
     } else if (this.state.grid[row][col].isStart && this.state.algoDone){
       this.setState({mouseIsPressed: true, start:true})}
       else if (this.state.grid[row][col].isFinish && this.state.algoDone){
-        this.setState({mouseIsPressed: true, end:true})
-      }
+      this.setState({mouseIsPressed: true, end:true})
+    } else if (this.state.keyPress == 87 && !this.state.algoDone){
+      const newGridTrap = getNewGridWithTrapToggled(this.state.grid, row, col)
+      this.setState({grid: newGridTrap, mouseIsPressed: true, start:false, end:false, wall:false})
+    }
   
   }
 
@@ -359,6 +422,9 @@ export default class PathfindingVisualizer extends Component {
       this.getNewStartWithAlgo(this.state.grid, row, col)
     } else if (this.state.algoDone && this.state.end){
       this.getNewFinishWithAlgo(this.state.grid, row, col)
+    } else if (this.state.keyPress == 87 && !this.state.algoDone){
+      const newGridTrap = getNewGridWithTrapToggled(this.state.grid, row, col)
+      this.setState({grid: newGridTrap})
     }
 
   }
@@ -371,7 +437,11 @@ export default class PathfindingVisualizer extends Component {
     const newGrid = clearAllWalls(this.state.grid);
     this.setState({grid: newGrid});
   }
-  
+
+  clearWeights = () => {
+    const newGrid = clearAllWeights(this.state.grid);
+    this.setState({grid: newGrid});
+  }
 
   animateDijkstra = (visitedNodesInOrder, nodesInShortestPathOrder) => {
     for (let i = 0; i <= visitedNodesInOrder.length; i++) {
@@ -387,6 +457,8 @@ export default class PathfindingVisualizer extends Component {
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-start-animate-dijkstra'
         } else if (node.isFinish){
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-finish-animate-dijkstra'
+        } else if (node.isTrap){
+          document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-trap-dijkstra'
         }
         else {document.getElementById(`node-${node.row}-${node.col}`).className =
           'node node-visited-animate-dijkstra';}
@@ -402,10 +474,12 @@ export default class PathfindingVisualizer extends Component {
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortestPath-start-animate'
         } else if(node.isFinish && !node.isVisited){
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-finish-noshortestpath'
+        } else if (node.isFinish && node.isVisited){
+          document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortestPath-finish-animate'
+        } else if (node.isTrap){
+          document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortestPath-trap-animate'
         }
-        else if (node.isFinish && node.isVisited){
-           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortestPath-finish-animate'
-        }else {document.getElementById(`node-${node.row}-${node.col}`).className =
+        else {document.getElementById(`node-${node.row}-${node.col}`).className =
           'node node-shortestPath-animate';}
       }, 50 * i);
     }
@@ -468,7 +542,9 @@ export default class PathfindingVisualizer extends Component {
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-start-animate-astar'
         } else if (node.isFinish){
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-finish-animate-astar'
-        }else {document.getElementById(`node-${node.row}-${node.col}`).className =
+        } else if (node.isTrap){
+          document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited-trap-astar'
+        } else {document.getElementById(`node-${node.row}-${node.col}`).className =
           'node node-visited-animate-astar';
         }
       }, 10 * i);
@@ -493,7 +569,7 @@ export default class PathfindingVisualizer extends Component {
 
 
 
-  clearPathNewAlgo = (start, finish ,walls) => {
+  clearPathNewAlgo = (start, finish ,walls, traps) => {
     const grid = [];
     for (let row = 0; row < 16; row++) {
       const currentRow = [];
@@ -514,6 +590,18 @@ export default class PathfindingVisualizer extends Component {
         }
       }
     } 
+    if (traps.length > 0){
+      for (const rows of grid){
+        for (const node of rows){
+          for (const trapNode of traps){
+            if (trapNode.row === node.row && trapNode.col === node.col){
+              node.isTrap = true;
+              node.weight = 10;
+            } 
+          }
+        }
+      }
+    }
     return grid ;
   }
     
@@ -524,6 +612,8 @@ export default class PathfindingVisualizer extends Component {
       isStart: row === start.row && col === start.col,
       isFinish: row === finish.row && col === finish.col,
       distance: Infinity,
+      weight:1,
+      isTrap:false,
       isVisited: false,
       isShortestPath: false,
       isWall: false,
@@ -555,7 +645,9 @@ export default class PathfindingVisualizer extends Component {
         }else if (node.isFinish){
           finishNode = node
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-finish'
-        }else if(node.isWall){
+        } else if (node.isTrap){
+          document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-trap'
+        } else if(node.isWall){
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-wall'
         }else{
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node'
@@ -635,12 +727,8 @@ export default class PathfindingVisualizer extends Component {
         }
       }
     }
-    console.log(grid)
-    console.log('startNode BFS', startNode, finishNode)
     const bfsVisitedNodes= bfs(grid, startNode, finishNode)
     const bfsShortestPath = getNodesInShortestPathOrderBfs(finishNode)
-    console.log('bfsVisitedNodes', bfsVisitedNodes)
-    console.log('bfsshortestPath', bfsShortestPath)
     this.animateBfs(bfsVisitedNodes, bfsShortestPath)
   
     this.setState({algoDone:true, algoType: 'bfs'})
@@ -663,10 +751,12 @@ export default class PathfindingVisualizer extends Component {
         if (node.isStart){
           startNode = node
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-start'
-        }else if (node.isFinish){
+        } else if (node.isFinish){
           finishNode = node
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-finish'
-        }else if (node.isWall){
+        } else if (node.isTrap){
+          document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-trap'
+        } else if (node.isWall){
           document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-wall'
         }
         else{
@@ -690,6 +780,7 @@ export default class PathfindingVisualizer extends Component {
       let start = null
       let finish = null
       const walls = []
+      const traps = []
       for (const rows of newGrid){
         for (const node of rows){
           if (node.isStart){
@@ -701,9 +792,12 @@ export default class PathfindingVisualizer extends Component {
           if (node.isWall){
             walls.push(node)
           }
+          if (node.isTrap){
+            traps.push(node)
+          }
         }
       }
-      const newGridAlgoStart = this.clearPathNewAlgo(start, finish, walls );
+      const newGridAlgoStart = this.clearPathNewAlgo(start, finish, walls, traps );
       this.resetBoardNewAlgoDijkstra(newGridAlgoStart, this.state.algoType);
 
 
@@ -714,10 +808,11 @@ export default class PathfindingVisualizer extends Component {
       const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
       const nodesInShortestPathOrder = getNodesInShortestPathOrderDijkstra(finishNode);
       this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
-      console.log('astar', visitedNodesInOrder)
       this.setState({algoDone: true, algoType : 'dijkstra'})
     } 
   }
+
+ 
  
   visualizeDfs = () => {
     if (this.state.algoDone){
@@ -726,6 +821,7 @@ export default class PathfindingVisualizer extends Component {
       let start = null;
       let finish = null;
       const walls = [];
+      const traps = [];
       for (const rows of newGrid){
         for (const node of rows){
           if (node.isStart){
@@ -739,10 +835,11 @@ export default class PathfindingVisualizer extends Component {
           }
         }
       }
-      const newGridAlgoStart = this.clearPathNewAlgo(start, finish, walls);
+      const newGridAlgoStart = this.clearPathNewAlgo(start, finish, walls,traps);
       this.resetBoardNewAlgoDfs(newGridAlgoStart, this.state.algoType);
     } 
     else{
+    this.clearWeights()
     const {grid} = this.state;
     const startNode = grid[this.state.startRow][this.state.startCol];
     const finishNode = grid[this.state.endRow][this.state.endCol];
@@ -760,6 +857,7 @@ export default class PathfindingVisualizer extends Component {
       let start = null;
       let finish = null;
       const walls = [];
+      const traps = [];
       for (const rows of newGrid){
         for (const node of rows){
           if (node.isStart){
@@ -773,9 +871,10 @@ export default class PathfindingVisualizer extends Component {
           }
         }
       }
-      const newGridAlgoStart = this.clearPathNewAlgo(start, finish, walls);
+      const newGridAlgoStart = this.clearPathNewAlgo(start, finish, walls, traps);
       this.resetBoardNewAlgoBfs(newGridAlgoStart, this.state.algoType);
     } else{
+      this.clearWeights()
       const {grid} = this.state;
       const startNode = grid[this.state.startRow][this.state.startCol];
       const finishNode = grid[this.state.endRow][this.state.endCol];
@@ -793,6 +892,7 @@ export default class PathfindingVisualizer extends Component {
       let start = null
       let finish = null
       const walls = []
+      const traps = []
       for (const rows of newGrid){
         for (const node of rows){
           if (node.isStart){
@@ -804,9 +904,12 @@ export default class PathfindingVisualizer extends Component {
           if (node.isWall){
             walls.push(node)
           }
+          if (node.isTrap){
+            traps.push(node)
+          }
         }
       }
-      const newGridAlgoStart = this.clearPathNewAlgo(start, finish, walls );
+      const newGridAlgoStart = this.clearPathNewAlgo(start, finish, walls, traps);
       this.resetBoardNewAlgoAstar(newGridAlgoStart, this.state.algoType);
     } else{
       const {grid} = this.state;
@@ -822,8 +925,7 @@ export default class PathfindingVisualizer extends Component {
 
   render() {
     const {grid, mouseIsPressed} = this.state;
-    {console.log(this.state.algoDone)};
-   
+    {console.log(this.state.grid)};
     return (
       <div className = 'parent'>
         <nav className = 'navbar'>
@@ -848,6 +950,9 @@ export default class PathfindingVisualizer extends Component {
             <button  className = 'other-button' onClick = {this.clearWalls}>
                 Clear Walls
               </button>
+              <button className = 'other-button' onClick = {this.clearWeights}> 
+                Clear Weights
+              </button>
               <button className = 'other-button'  onClick = {this.visualizeRecursiveDivMaze}>
                 Create Maze
               </button>
@@ -859,14 +964,14 @@ export default class PathfindingVisualizer extends Component {
 
         <Carousel />
 
-        <div className="grid">
+        <div className="grid" >
         
           {grid.map((row, rowIdx) => {
             return (
               //this is not the recommended way of setting key prop 
               <div key={rowIdx}>
                 {row.map((node, nodeIdx) => {
-                  const {row, col, isFinish, isStart, isWall} = node
+                  const {row, col, isFinish, isStart, isWall, isTrap, weight} = node
                   return (
                     <Node
                       key={nodeIdx}
@@ -874,6 +979,8 @@ export default class PathfindingVisualizer extends Component {
                       isFinish={isFinish}
                       isStart={isStart}
                       isWall={isWall}
+                      isTrap={isTrap}
+                      weight={weight}
                       mouseIsPressed={mouseIsPressed}
                       onMouseDown={(row, col) => this.handleMouseDown(row, col)}
                       onMouseEnter={(row, col) =>
@@ -893,6 +1000,20 @@ export default class PathfindingVisualizer extends Component {
   }
 }
 
+const clearAllWeights = (grid) => {
+  const newGrid = grid.slice();
+  for (const row of newGrid){
+    for (const node of row){
+      if (node.isTrap){
+        node.isTrap = !node.isTrap
+      }
+      if (document.getElementById(`node-${node.row}-${node.col}`).className === "node node-trap"){
+        document.getElementById(`node-${node.row}-${node.col}`).className = "node";
+      }
+    }
+  }
+  return newGrid;
+}
 
 const clearAllWalls = (grid) => {
   const newGrid = grid.slice();
@@ -912,12 +1033,24 @@ const clearAllWalls = (grid) => {
 
 
 const getNewGridWithWallToggled = (grid, row, col) => {
-   const newGrid = grid.slice();
+  const newGrid = grid.slice();
   const node = newGrid[row][col];
   const newNode = {
     ...node,
     isWall: !node.isWall,
   };
+  newGrid[row][col] = newNode;
+  return newGrid;
+};
+
+const getNewGridWithTrapToggled = (grid, row, col) => {
+  const newGrid = grid.slice();
+  const node = newGrid[row][col];
+  const newNode = {
+   ...node,
+   isTrap: !node.isTrap,
+  };
+  newNode.isTrap? newNode.weight = 10: newNode.weight = 1;
   newGrid[row][col] = newNode;
   return newGrid;
 };

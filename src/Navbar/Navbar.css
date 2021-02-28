@@ -6,20 +6,19 @@
   align-items: center; */
   font-size: 1rem;
   position: relative;
-
-  z-index: 10;
 }
 
 .navbar-logo {
   color: #fff;
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   width: 450px;
   left: 400px;
   position: fixed;
   top: -40px;
 }
-@media screen and (max-width: 1145px) {
+
+@media screen and (max-width: 1240px) {
   .navbar-logo {
     color: #fff;
     text-decoration: none;
@@ -30,7 +29,7 @@
     top: -20px;
   }
 }
-@media screen and (max-width: 1090px) {
+@media screen and (max-width: 1180px) {
   .navbar-logo {
     position: fixed;
     top: -20px;
@@ -73,9 +72,10 @@
 
 .otherButtons {
   position: fixed;
+  /* top: 20px; */
   top: 20px;
-  right: 10px;
-  width: 300px;
+  right: 3px;
+  width: 400px;
   cursor: pointer;
   user-select: none;
 }

@@ -57,7 +57,7 @@
 
 .node-start {
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -75,7 +75,7 @@
 
 .node-finish {
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image: url(../../images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese.svg);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -101,9 +101,15 @@
   animation-fill-mode: backwards;
   animation-play-state: running; */
 }
+.node-trap {
+  background-image: url(../../images/cat.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 
 .node-finish-visited {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -111,7 +117,7 @@
 }
 
 .node-start-visited {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -120,7 +126,7 @@
 }
 
 .node-visited-start {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -129,7 +135,7 @@
 }
 
 .node-start-noshortestpath {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -138,15 +144,46 @@
 }
 
 .node-finish-noshortestpath {
-  background-image: url(../../images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .node-visited-finish {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   background-color: rgb(255, 254, 106);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.node-visited-trap-noshortestpath {
+  background-image: url(../../images/cat.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.node-visited-trap {
+  background-image: url(../../images/cat.svg);
+  background-color: rgb(255, 254, 106);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.node-visited-trap-dijkstra-noanimate {
+  background-image: url(../../images/cat.svg);
+  background-color: #00ff00;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.node-visited-trap-astar-noanimate {
+  background-image: url(../../images/cat.svg);
+  background-color: #ff0000;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -173,7 +210,7 @@
 }
 
 .node-visited-start-animate-dijkstra {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   animation-name: visitedAnimationDijkstra;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -185,7 +222,19 @@
 }
 
 .node-visited-finish-animate-dijkstra {
-  background-image: url(../../images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese.svg);
+  animation-name: visitedAnimationDijkstra;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-trap-dijkstra {
+  background-image: url(../../images/cat.svg);
   animation-name: visitedAnimationDijkstra;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -209,7 +258,7 @@
 }
 
 .node-visited-start-animate-dfs {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   animation-name: visitedAnimationDfs;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -221,7 +270,7 @@
 }
 
 .node-visited-finish-animate-dfs {
-  background-image: url(../../images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese.svg);
   animation-name: visitedAnimationDfs;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -244,7 +293,7 @@
 }
 
 .node-visited-start-animate-bfs {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   animation-name: visitedAnimationBfs;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -256,7 +305,7 @@
 }
 
 .node-visited-finish-animate-bfs {
-  background-image: url(../../images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese.svg);
   animation-name: visitedAnimationBfs;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -279,7 +328,7 @@
 }
 
 .node-visited-start-animate-astar {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   animation-name: visitedAnimationAStar;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -291,7 +340,19 @@
 }
 
 .node-visited-finish-animate-astar {
-  background-image: url(../../images/cheese-svgrepo-com.svg);
+  background-image: url(../../images/cheese.svg);
+  animation-name: visitedAnimationAStar;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.node-visited-trap-astar {
+  background-image: url(../../images/cat.svg);
   animation-name: visitedAnimationAStar;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -314,7 +375,7 @@
 }
 
 .node-shortestPath-start-animate {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
   opacity: 0.5;
   animation-name: shortestPath;
   animation-duration: 0.5s;
@@ -326,7 +387,18 @@
   animation-play-state: running;
 }
 .node-shortestPath-finish-animate {
-  background-image: url(../../images/mouse-svgrepo-com.svg);
+  background-image: url(../../images/mouse.svg);
+  animation-name: shortestPath;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+.node-shortestPath-trap-animate {
+  background-image: url(../../images/cat.svg);
   animation-name: shortestPath;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
@@ -456,7 +528,7 @@
   0% {
     transform: scale(0.6);
     background-color: rgb(255, 254, 106);
-    background-image: url(../../images/animal-footprints-svgrepo-com.svg);
+    background-image: url(../../images/footprints.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -465,7 +537,7 @@
   50% {
     transform: scale(1.2);
     background-color: rgb(255, 254, 106);
-    /* background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/animal-footprints-svgrepo-com.svg);
+    /* background-image: url(/Users/gilbertosanchez/pathfinder_visualizer/src/images/footprints.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain; */

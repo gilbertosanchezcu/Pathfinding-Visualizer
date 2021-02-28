@@ -9,8 +9,8 @@
 }
 
 .intro-slide {
-  width: 950px;
-  height: 90px;
+  width: 990px;
+  height: 92px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,9 +38,32 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
 
+.about-slide {
+  width: 990px;
+  height: 92px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-top: 15px;
+  background-color: #ff8400;
+}
+
+.about-slide p {
+  font-size: 20px;
+}
+
+.about-slide:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
 .text-box {
   width: 240px;
-  height: 90px;
+  height: 92px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +155,7 @@
 
 .astar-slide {
   width: 240px;
-  height: 90px;
+  height: 92px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,7 +173,7 @@
 }
 .dijkstra-slide {
   width: 240px;
-  height: 90px;
+  height: 92px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -169,7 +192,7 @@
 
 .bfs-slide {
   width: 240px;
-  height: 90px;
+  height: 92px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -188,7 +211,7 @@
 
 .dfs-slide {
   width: 240px;
-  height: 90px;
+  height: 92px;
   display: flex;
   justify-content: center;
   align-items: center;
