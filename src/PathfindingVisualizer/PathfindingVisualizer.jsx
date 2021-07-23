@@ -8,7 +8,7 @@ import {recursiveDivisionMaze} from '../Maze/recursiveDivMaze';
 import {Carousel} from '../Notification/Carousel';
 import '../Navbar/Navbar.css';
 import './PathfindingVisualizer.css';
-
+import MessageComponent from '../Notes/MessageComponent';
 // const START_ROW = 10;
 // const START_COL = 15;
 // const END_ROW = 10;
@@ -41,6 +41,9 @@ export default class PathfindingVisualizer extends Component {
     this.setState({grid});
     window.addEventListener("keydown", this.handleKeyDown)
     window.addEventListener("keyup", this.handleKeyUp)
+
+
+
   };
 
 
@@ -994,6 +997,9 @@ export default class PathfindingVisualizer extends Component {
             )
           })}
         </div>
+
+        <MessageComponent />
+
       </div>  
     )
   }

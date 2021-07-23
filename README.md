@@ -27,3 +27,8 @@ Click on cells to add walls.
 Hold 'w' key while clicking on cells to add weight (cats). The cats make the path more treacherous and have a weight of 10.
 
 Once search algorithm is done running, drag start or end point to automatically calculate new paths. Click on different algorithms to compare paths.
+
+### Added Feautures
+
+There is a new Notepad feature where users can enter a username and make a note (write anything they'd like).
+The user information that gets posted to the Notepad will be stored in a database. The database is currently being built.
