@@ -5,8 +5,6 @@ import './Notes.css'
 
 
 
-
-
 export default class SingleComment extends Component{
 
 

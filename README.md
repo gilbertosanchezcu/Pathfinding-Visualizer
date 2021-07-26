@@ -30,5 +30,7 @@ Once search algorithm is done running, drag start or end point to automatically 
 
 ### Added Feautures
 
-There is a new Notepad feature where users can enter a username and make a note (write anything they'd like).
-The user information that gets posted to the Notepad will be stored in a database. The database is currently being built.
+The Notepad feature allows users to create posts by entering a username and adding a message
+Once the user clicks on "post" the user post (username and message) will be displayed in the "Notepad" section of the website and will be stored in a database.
+
+REST API can be found at https://github.com/gilbertosanchezcu/Notepad-API

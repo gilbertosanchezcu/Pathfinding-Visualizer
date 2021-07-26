@@ -8,13 +8,9 @@ import {recursiveDivisionMaze} from '../Maze/recursiveDivMaze';
 import {Carousel} from '../Notification/Carousel';
 import '../Navbar/Navbar.css';
 import './PathfindingVisualizer.css';
-import MessageComponent from '../Notes/MessageComponent';
-// const START_ROW = 10;
-// const START_COL = 15;
-// const END_ROW = 10;
-// const END_COL = 35;
-// const objectTargetStatus = ['node node-start', 'node node-finish'];
-// const objectPathStatus = ["node node-visited", "node node-shortest-path", "node node-wall"]
+import NotesComponent from '../Notepad/NotesComponent';
+
+
 
 export default class PathfindingVisualizer extends Component {
   constructor() {
@@ -31,9 +27,11 @@ export default class PathfindingVisualizer extends Component {
       wall: false,
       end: false,
       algoDone: false,
-      algoType: ''
+      algoType: '',
+      notes:[],
     };
   } 
+
 
 
   componentDidMount() {
@@ -42,7 +40,9 @@ export default class PathfindingVisualizer extends Component {
     window.addEventListener("keydown", this.handleKeyDown)
     window.addEventListener("keyup", this.handleKeyUp)
 
-
+    fetch('http://localhost:3001/api/v1/notes')
+      .then(res => res.json())
+      .then(notes => this.setState({notes}))
 
   };
 
@@ -925,6 +925,11 @@ export default class PathfindingVisualizer extends Component {
     } 
   }
 
+  updateNotes = newNotes => {
+    // this.setState({notes:this.state.notes.concat(newNotes)})
+    this.setState({notes: [newNotes].concat(this.state.notes)})
+}
+
 
   render() {
     const {grid, mouseIsPressed} = this.state;
@@ -997,8 +1002,7 @@ export default class PathfindingVisualizer extends Component {
             )
           })}
         </div>
-
-        <MessageComponent />
+        <NotesComponent notes={this.state.notes} updateNotes={this.updateNotes}/>
 
       </div>  
     )

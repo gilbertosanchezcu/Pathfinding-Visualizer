@@ -8,7 +8,7 @@ export default class MessageForm extends Component{
     
     state = {
         username: '',
-        note: '',
+        message: '',
     }
 
     handleChange = event => {
@@ -18,16 +18,31 @@ export default class MessageForm extends Component{
     
     handleSubmit = event => {
         event.preventDefault() 
-        if (this.state.username){
-            const obj = {'username':this.state.username, 'note': this.state.note}
-            this.props.updateMessage(obj)
-            this.setState({username:'', note:''})
+        if (this.state.username && this.state.message){
+            const obj = {username:this.state.username, message: this.state.message}
+
+            //optimistic rendering 
+            this.props.updateNotes(obj)
+            this.setState({username:'', message:''})
+
+            fetch("http://localhost:3001/api/v1/notes", {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json",
+                    "accept": "application/json"
+                },
+                body: JSON.stringify(obj)
+            })
+            
 
             
 
-        } else {
+        } else if (!this.state.username){
             alert('Enter a username!')
+        }else{
+            alert('Enter a message!')
         }
+
     }
 
 
@@ -42,7 +57,7 @@ export default class MessageForm extends Component{
                 <div className = 'form-container'>
                     <form className="form">
                         <input name="username" value={this.state.username} onChange={this.handleChange} placeholder="Username" className='input'/> 
-                        <textarea name="note" value ={this.state.note} onChange={this.handleChange} placeholder='Write some stuff down...' className='text-input'/>
+                        <textarea name="message" value ={this.state.message} onChange={this.handleChange} placeholder='Write some stuff down...' className='text-input'/>
 
                         <button type="submit" className='post-button' onClick={this.handleSubmit}>Post</button>
                     </form>
