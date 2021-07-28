@@ -2,7 +2,7 @@ export const SliderData = [
     {
         id: 0,
         index:0,
-        text: 'Hello! The fresh scent of cheese has caught the attention of a wondering mouse. Watch as he attempts to find the cheese.',
+        text: 'Hello! The fresh scent of cheese has caught the attention of a wondering mouse. Watch as he attempts to find the cheese! Click on arrows for instructions.',
         class: 'intro-slide'
     },
 

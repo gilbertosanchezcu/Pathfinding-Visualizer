@@ -1,81 +1,62 @@
 .navbar {
   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
   height: 80px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  font-size: 1rem;
-  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.navbar-logo {
+.navbar-title {
   color: #fff;
   text-decoration: none;
-  font-size: 1.7rem;
-  width: 450px;
-  left: 400px;
-  position: fixed;
-  top: -40px;
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding-top: 10px;
+}
+.navbar-title > span {
+  font-size: 50px;
+  font-weight: 7px;
+  font-family: Arial;
 }
 
-@media screen and (max-width: 1240px) {
-  .navbar-logo {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.4rem;
-    width: 450px;
-    left: 400px;
-    position: fixed;
-    top: -20px;
-  }
-}
-@media screen and (max-width: 1180px) {
-  .navbar-logo {
-    position: fixed;
-    top: -20px;
-    right: 10px;
-    width: 300px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-}
-
-.navbar-logo:hover {
+.navbar-title:hover {
   transform: scale(1.2);
   cursor: default;
   user-select: none;
 }
-.fa-firstdraft {
-  margin-left: 20rem;
-  font-size: 1.5rem;
-  float: left;
-  text-align: center;
+
+@media screen and (max-width: 1209px) {
+  .navbar-title > span {
+    font-size: 33px;
+  }
 }
 
-.nav-menu {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  text-align: center;
-  margin-right: -22px;
+@media screen and (max-width: 1046px) {
+  .navbar {
+    height: 96px;
+  }
 }
 
 .algoButtons {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  width: 250px;
+  margin-top: 20px;
+  width: 330px;
+  height: 60px;
+  float: left;
+
   cursor: pointer;
   user-select: none;
 }
 
 .otherButtons {
-  position: fixed;
-  /* top: 20px; */
-  top: 20px;
-  right: 3px;
+  margin-top: 20px;
   width: 400px;
+  height: 60px;
+  float: right;
   cursor: pointer;
   user-select: none;
 }
@@ -87,6 +68,24 @@
   background-color: #1888ff;
   cursor: pointer;
   user-select: none;
+}
+
+@media screen and (max-width: 677px) {
+  .algoButtons {
+    width: 360px;
+  }
+}
+
+@media screen and (max-width: 537px) {
+  .algoButtons {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 511px) {
+  .otherButtons {
+    margin-top: 10px;
+  }
 }
 
 .nav-item1 {
@@ -124,31 +123,4 @@
   background-color: #1888ff;
   cursor: pointer;
   user-select: none;
-}
-
-.nav-links {
-  color: white;
-  display: flex;
-  align-items: center;
-  padding: 0 1rem;
-  height: 100%;
-  cursor: pointer;
-}
-
-.nav-links:hover {
-  background-color: #1888ff;
-  border-radius: 4px;
-  transition: all 0.2s ease-out;
-}
-
-.fa-bars {
-  color: #fff;
-}
-
-.nav-links-mobile {
-  display: none;
-}
-
-.menu-icon {
-  display: none;
 }

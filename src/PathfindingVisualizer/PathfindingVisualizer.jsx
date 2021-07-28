@@ -950,8 +950,8 @@ export default class PathfindingVisualizer extends Component {
               DFS Search 
             </button>
           </div>
-          <div className = 'navbar-logo'>
-            <h1>Pathfinding Visualizer</h1>
+          <div className = 'navbar-title'>
+            <span>Pathfinding Visualizer</span>
           </div>
           <div className = 'otherButtons'>  
             <button  className = 'other-button' onClick = {this.clearWalls}>

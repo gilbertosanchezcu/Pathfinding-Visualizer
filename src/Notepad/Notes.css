@@ -10,7 +10,6 @@
 .message-component h1 {
   width: fit-content;
   height: 40px;
-  /* border: 1px solid; */
   background-color: #ff8400;
   margin: 25px auto 25px auto;
   padding: 14px 8px 10px 8px;
@@ -27,7 +26,6 @@
 .form {
   display: flex;
   flex-direction: column;
-  /* padding-left:150px */
   padding-left: 100px;
 }
 
@@ -40,7 +38,7 @@
   padding-top: 2px;
   padding-bottom: 2px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   border-color: rgb(56, 56, 56);
 }
 
@@ -50,14 +48,15 @@
   height: 140px;
   padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   border-radius: 8px;
   border-color: rgb(56, 56, 56);
 }
 
 .post-button {
   margin: 5px;
-  width: fit-content;
+  min-width: fit-content;
+  width: 10%;
 }
 
 /* message board css */
